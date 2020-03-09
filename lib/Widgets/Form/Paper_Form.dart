@@ -1,25 +1,22 @@
 import 'package:flutter/cupertino.dart';
 
 class PaperForm extends StatelessWidget {
-  final double padding;
-  final List<Widget> actionButtons;
-  final List<Widget> children;
+  final List<Widget> actionButtons; //just the import button
+  final List<Widget> authMechanism;
 
   PaperForm({
-    this.padding = 8,
+    this.authMechanism,
     this.actionButtons,
-    this.children,
   });
 
   @override
   Widget build(BuildContext context) {
     return Form(
       child: Padding(
-        //consider changing padding to 8
-        padding: EdgeInsets.all(this.padding),
+        padding: EdgeInsets.all(30),
         child: Column(children: [
+          ...this.authMechanism,
           ..._actionButtons(),
-          ...this.children,
         ]),
       ),
     );
