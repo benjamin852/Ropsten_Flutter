@@ -1,4 +1,6 @@
 // import 'package:provider/provider.dart';
+import 'package:ethereum_flutter/Blockchain/address_services.dart';
+import 'package:ethereum_flutter/Utils/configuration_services.dart';
 import 'package:provider/provider.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';
@@ -18,4 +20,6 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
   );
 
   final sharedPrefs = await SharedPreferences.getInstance();
+  final configurationServices = ConfigurationService(sharedPrefs);
+  final addressServices = AddressService(configurationServices);
 }
