@@ -8,6 +8,7 @@ import 'package:web_socket_channel/io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:ethereum_flutter/Blockchain/App_Config.dart';
+import 'package:ethereum_flutter/Blockchain/contract_parser.dart';
 
 Future<List<SingleChildCloneableWidget>> rootProvider(
     AppConfigParams params) async {
@@ -22,4 +23,7 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
   final sharedPrefs = await SharedPreferences.getInstance();
   final configurationServices = ConfigurationService(sharedPrefs);
   final addressServices = AddressService(configurationServices);
+
+  final contract = await ContractParser.parseContract(
+      'assets/TargaryenCoin.json', params.contractAddress);
 }
