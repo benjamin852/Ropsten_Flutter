@@ -1,5 +1,6 @@
 // import 'package:provider/provider.dart';
 import 'package:ethereum_flutter/Blockchain/address_services.dart';
+import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
 import 'package:ethereum_flutter/Utils/configuration_services.dart';
 import 'package:provider/provider.dart';
 import 'package:web3dart/web3dart.dart';
@@ -30,4 +31,11 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
       'assets/TargaryenCoin.json', params.contractAddress);
 
   // final contractService = TODO
+  final walletInitialize = WalletInitialize(
+    configurationServices,
+    addressServices,
+  );
+
+  //TODO
+  // final walletImportStore = WalletImportStore(walletInitialize, addressServices);
 }
