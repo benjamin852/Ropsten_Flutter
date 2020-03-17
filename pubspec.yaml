@@ -20,7 +20,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
-  mobx: ^1.0.1
   # provider: ^4.0.4
   provider: ^3.1.0+1
   web3dart: ^1.2.3
@@ -28,10 +27,13 @@ dependencies:
   shared_preferences: ^0.5.6+3
   bip39: ^1.0.3
   ed25519_hd_key: ^1.0.1
+  mobx: ^1.0.2+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mobx_codegen: ^1.0.1
+  build_runner: ^1.7.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

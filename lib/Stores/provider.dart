@@ -21,9 +21,13 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
   );
 
   final sharedPrefs = await SharedPreferences.getInstance();
+  //fetch existing address
   final configurationServices = ConfigurationService(sharedPrefs);
+  //fetch or create address
   final addressServices = AddressService(configurationServices);
 
   final contract = await ContractParser.parseContract(
       'assets/TargaryenCoin.json', params.contractAddress);
+
+  // final contractService = TODO
 }
