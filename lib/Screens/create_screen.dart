@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:ethereum_flutter/Stores/wallet_create_store.dart';
@@ -51,6 +52,28 @@ class _CreateScreenState extends State<CreateScreen> {
                   textAlign: TextAlign.center,
                 ),
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                OutlineButton(
+                  child: Text('Copy'),
+                  onPressed: () {
+                    Clipboard.setData(
+                      ClipboardData(text: 'Wazy'), //widget.store.mnemonic))
+                    );
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Copied"),
+                      ),
+                    );
+                  },
+                ),
+                RaisedButton(
+                  child: const Text('Next'),
+                  onPressed: () => print('TO DO'),
+                )
+              ],
             )
           ],
         ),
