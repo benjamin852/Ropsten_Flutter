@@ -77,6 +77,13 @@ mixin _$WalletInitialize on _WalletInitialize, Store {
     }, _$privateKeyAtom, name: '${_$privateKeyAtom.name}_set');
   }
 
+  final _$resetWalletAsyncAction = AsyncAction('resetWallet');
+
+  @override
+  Future<void> resetWallet() {
+    return _$resetWalletAsyncAction.run(() => super.resetWallet());
+  }
+
   @override
   String toString() {
     final string =

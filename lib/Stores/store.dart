@@ -2,6 +2,7 @@
 import 'package:ethereum_flutter/Blockchain/address_services.dart';
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
 import 'package:ethereum_flutter/Utils/configuration_services.dart';
+import 'package:ethereum_flutter/Stores/wallet_import_store.dart';
 import 'package:provider/provider.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';
@@ -36,6 +37,12 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
     addressServices,
   );
 
-  //TODO
-  // final walletImportStore = WalletImportStore(walletInitialize, addressServices);
+  final walletImportStore =
+      WalletImportStore(walletInitialize, addressServices);
+
+  return [
+    Provider<WalletImportStore>(
+      create: (_) => walletImportStore,
+    )
+  ];
 }
