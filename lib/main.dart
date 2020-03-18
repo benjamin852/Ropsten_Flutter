@@ -6,20 +6,20 @@ import 'package:ethereum_flutter/Stores/store.dart';
 
 import 'package:ethereum_flutter/Utils/Routes.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
 
-  final stores = await rootProvider(AppConfig().params['ropsten']);
-  runApp(MyApp(stores));
+  // final stores = await rootProvider(AppConfig().params['ropsten']);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final stores;
-  MyApp(this.stores);
+  // final stores;
+  // MyApp(this.stores);
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: stores,
+    return Center(
+      // providers: stores,
       child: new MaterialApp(
         title: 'Ethereum Flutter Wallet',
         initialRoute: '/',
