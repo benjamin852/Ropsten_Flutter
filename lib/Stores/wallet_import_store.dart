@@ -74,7 +74,8 @@ abstract class _WalletImportStoreBase with Store {
     this.errors.clear();
     try {
       if (_mnemonicArray(mnemonic).length == 12) {
-        await _addressService.setupFromMnemonic(mnemonic);
+        final stringMnemonic = _mnemonicString(mnemonic);
+        await _addressService.setupFromMnemonic(stringMnemonic);
         await walletInitialize.initialise();
         return true;
       }
