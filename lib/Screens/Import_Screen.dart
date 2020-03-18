@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:ethereum_flutter/Widgets/Form/Paper_Form.dart';
 import 'package:ethereum_flutter/Widgets/Form/Paper_Radio.dart';
@@ -30,60 +31,62 @@ class _ImportScreenState extends State<ImportScreen> {
       appBar: AppBar(
         title: Text('Title from store'),
       ),
-      // body: Observer(builder: (_) => buildForm()),
-      body: Center(
-        child: Container(
-          margin: EdgeInsets.all(25),
-          color: Colors.grey[200],
-          child: SingleChildScrollView(
-            child: PaperForm(
-              actionButtons: <Widget>[
-                RaisedButton(
-                  child: Text('Import'),
-                  onPressed: () async {
-                    if (widget.store.type == WalletImportType.mnemonic &&
-                        await widget.store.authenticateWithMnemonic()) {
-                      print('navigate to the homepage');
-                    }
-                    if (widget.store.type == WalletImportType.privateKey &&
-                        await widget.store.authenticateWithPrivateKey()) {
-                      print('navigate to homepage');
-                    }
-                  },
-                )
-              ],
-              authMechanism: <Widget>[
-                Row(
-                  children: <Widget>[
-                    PaperRadio(
-                      title: 'Mnemonic',
-                      value: WalletImportType.mnemonic,
-                      groupValue: widget.store.type,
-                      onChanged: (value) => widget.store.setType(value),
-                    ),
-                    PaperRadio(
-                      title: 'Private Key',
-                      value: WalletImportType.mnemonic,
-                      groupValue: widget.store.type,
-                      onChanged: (value) => widget.store.setType(value),
-                    )
-                  ],
+      //rebuilds all observables when they change
+      body: Observer(builder: (_) => buildForm()),
+    );
+  }
+
+  Widget buildForm() {
+    Container(
+      margin: EdgeInsets.all(25),
+      color: Colors.grey[200],
+      child: SingleChildScrollView(
+        child: PaperForm(
+          actionButtons: <Widget>[
+            RaisedButton(
+              child: Text('Import'),
+              onPressed: () async {
+                if (widget.store.type == WalletImportType.mnemonic &&
+                    await widget.store.authenticateWithMnemonic()) {
+                  print('navigate to the homepage');
+                }
+                if (widget.store.type == WalletImportType.privateKey &&
+                    await widget.store.authenticateWithPrivateKey()) {
+                  print('navigate to homepage');
+                }
+              },
+            )
+          ],
+          authMechanism: <Widget>[
+            Row(
+              children: <Widget>[
+                PaperRadio(
+                  title: 'Mnemonic',
+                  value: WalletImportType.mnemonic,
+                  groupValue: widget.store.type,
+                  onChanged: (value) => widget.store.setType(value),
                 ),
-                Column(
-                  children: <Widget>[
-                    Visibility(
-                      child: privateKeyForm(),
-                      visible: widget.store.type == WalletImportType.privateKey,
-                    ),
-                    Visibility(
-                      child: mnemonicForm(),
-                      visible: widget.store.type == WalletImportType.mnemonic,
-                    )
-                  ],
+                PaperRadio(
+                  title: 'Private Key',
+                  value: WalletImportType.mnemonic,
+                  groupValue: widget.store.type,
+                  onChanged: (value) => widget.store.setType(value),
                 )
               ],
             ),
-          ),
+            Column(
+              children: <Widget>[
+                Visibility(
+                  child: privateKeyForm(),
+                  visible: widget.store.type == WalletImportType.privateKey,
+                ),
+                Visibility(
+                  child: mnemonicForm(),
+                  visible: widget.store.type == WalletImportType.mnemonic,
+                )
+              ],
+            )
+          ],
         ),
       ),
     );
