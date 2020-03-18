@@ -5,9 +5,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:ethereum_flutter/Stores/wallet_create_store.dart';
 
 class CreateScreen extends StatefulWidget {
-  final WalletCreateStore store;
-  final String title;
-  CreateScreen(this.store, this.title);
+  static const routeName = '/create-screen';
+  // final WalletCreateStore store;
+  // CreateScreen(this.store);
   @override
   _CreateScreenState createState() => _CreateScreenState();
 }
