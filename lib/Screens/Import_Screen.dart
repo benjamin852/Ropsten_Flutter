@@ -40,9 +40,15 @@ class _ImportScreenState extends State<ImportScreen> {
               actionButtons: <Widget>[
                 RaisedButton(
                   child: Text('Import'),
-                  onPressed: () {
-                    print('if chooses mnemonic then auth via mnemonic');
-                    print('if chooses private key then auth via private key');
+                  onPressed: () async {
+                    if (widget.store.type == WalletImportType.mnemonic &&
+                        await widget.store.authenticateWithMnemonic()) {
+                      print('navigate to the homepage');
+                    }
+                    if (widget.store.type == WalletImportType.privateKey &&
+                        await widget.store.authenticateWithPrivateKey()) {
+                      print('navigate to homepage');
+                    }
                   },
                 )
               ],
@@ -91,7 +97,7 @@ class _ImportScreenState extends State<ImportScreen> {
           labelText: 'Private Key',
           hintText: 'Type your private key',
           maxLines: 3,
-          onChanged: (value) => widget.store.authenticateWithPrivateKey(value),
+          onChanged: (value) => widget.store.setPrivateKey(value),
         ),
       ],
     );
@@ -105,7 +111,7 @@ class _ImportScreenState extends State<ImportScreen> {
           labelText: 'Mnemonic',
           hintText: 'Type your mnemonic',
           maxLines: 3,
-          onChanged: null,
+          onChanged: (value) => widget.store.setMnemonic(value),
         ),
       ],
     );

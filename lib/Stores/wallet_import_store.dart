@@ -57,7 +57,7 @@ abstract class _WalletImportStoreBase with Store {
   }
 
   @action
-  Future<bool> authenticateWithPrivateKey(String privateKey) async {
+  Future<bool> authenticateWithPrivateKey() async {
     this.errors.clear();
     try {
       await _addressService.setupFromPrivateKey(privateKey);
