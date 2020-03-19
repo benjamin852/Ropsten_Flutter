@@ -1,13 +1,15 @@
+import 'package:ethereum_flutter/Widgets/Form/paper_form.dart';
+import 'package:ethereum_flutter/Widgets/Form/paper_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'package:ethereum_flutter/Stores/wallet_create_store.dart';
+import 'package:ethereum_flutter/Stores/create_screen_store.dart';
 
 class CreateScreen extends StatefulWidget {
   static const routeName = '/create-screen';
-  // final WalletCreateStore store;
-  // CreateScreen(this.store);
+  final CreateScreenStore store;
+  CreateScreen(this.store);
   @override
   _CreateScreenState createState() => _CreateScreenState();
 }
@@ -16,7 +18,7 @@ class _CreateScreenState extends State<CreateScreen> {
   @override
   void initState() {
     super.initState();
-    // widget.store.generateMnemonic();
+    widget.store.generateMnemonic();
   }
 
   @override
@@ -27,7 +29,6 @@ class _CreateScreenState extends State<CreateScreen> {
       ),
       body: Observer(
         builder: (context) {
-          // add turnary based on store condition
           return _displayMnemonic();
         },
       ),
@@ -72,6 +73,45 @@ class _CreateScreenState extends State<CreateScreen> {
                 RaisedButton(
                   child: const Text('Next'),
                   onPressed: () => print('TO DO'),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget displayConfirmWidget() {
+    return Center(
+      child: Container(
+        margin: EdgeInsets.all(25),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            PaperForm(
+              actionButtons: <Widget>[
+                OutlineButton(
+                  child: const Text('Generate New Mnemonic'),
+                  onPressed: () async {
+                    widget.store.generateMnemonic();
+                  },
+                ),
+                RaisedButton(
+                  child: const Text('Confirm'),
+                  onPressed: () async {
+                    if (await widget.store.confirmMnemonic()) {
+                      Navigator.of(context).pushNamed('/');
+                    }
+                  },
+                )
+              ],
+              authMechanism: <Widget>[
+                PaperInput(
+                  labelText: 'Confirm your seed',
+                  hintText: 'Please type your seed phrase again',
+                  maxLines: 2,
+                  onChanged: widget.store.setMnemonicConfirmation,
                 )
               ],
             )

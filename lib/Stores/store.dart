@@ -1,5 +1,7 @@
 // import 'package:provider/provider.dart';
 import 'package:ethereum_flutter/Blockchain/address_services.dart';
+import 'package:ethereum_flutter/Screens/create_screen.dart';
+import 'package:ethereum_flutter/Stores/create_screen_store.dart';
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
 import 'package:ethereum_flutter/Utils/configuration_services.dart';
 import 'package:ethereum_flutter/Stores/wallet_import_store.dart';
@@ -40,9 +42,15 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
   final walletImportStore =
       WalletImportStore(walletInitialize, addressServices);
 
+  final createScreenStore =
+      CreateScreenStore(walletInitialize, addressServices);
+
   return [
     Provider<WalletImportStore>(
       create: (_) => walletImportStore,
+    ),
+    Provider<CreateScreenStore>(
+      create: (_) => createScreenStore,
     )
   ];
 }

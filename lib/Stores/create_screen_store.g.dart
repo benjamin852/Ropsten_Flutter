@@ -8,8 +8,8 @@ part of 'create_screen_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$WalletCreateStore on _WalletCreateStoreBase, Store {
-  final _$mnemonicAtom = Atom(name: '_WalletCreateStoreBase.mnemonic');
+mixin _$CreateScreenStore on CreateScreenStoreBase, Store {
+  final _$mnemonicAtom = Atom(name: 'CreateScreenStoreBase.mnemonic');
 
   @override
   String get mnemonic {
@@ -27,7 +27,7 @@ mixin _$WalletCreateStore on _WalletCreateStoreBase, Store {
   }
 
   final _$mnemonicConfirmAtom =
-      Atom(name: '_WalletCreateStoreBase.mnemonicConfirm');
+      Atom(name: 'CreateScreenStoreBase.mnemonicConfirm');
 
   @override
   String get mnemonicConfirm {
@@ -44,7 +44,7 @@ mixin _$WalletCreateStore on _WalletCreateStoreBase, Store {
     }, _$mnemonicConfirmAtom, name: '${_$mnemonicConfirmAtom.name}_set');
   }
 
-  final _$stepAtom = Atom(name: '_WalletCreateStoreBase.step');
+  final _$stepAtom = Atom(name: 'CreateScreenStoreBase.step');
 
   @override
   WalletCreateSteps get step {
@@ -61,7 +61,7 @@ mixin _$WalletCreateStore on _WalletCreateStoreBase, Store {
     }, _$stepAtom, name: '${_$stepAtom.name}_set');
   }
 
-  final _$errorsAtom = Atom(name: '_WalletCreateStoreBase.errors');
+  final _$errorsAtom = Atom(name: 'CreateScreenStoreBase.errors');
 
   @override
   ObservableList<String> get errors {
@@ -85,56 +85,56 @@ mixin _$WalletCreateStore on _WalletCreateStoreBase, Store {
     return _$confirmMnemonicAsyncAction.run(() => super.confirmMnemonic());
   }
 
-  final _$_WalletCreateStoreBaseActionController =
-      ActionController(name: '_WalletCreateStoreBase');
+  final _$CreateScreenStoreBaseActionController =
+      ActionController(name: 'CreateScreenStoreBase');
 
   @override
   void generateMnemonic() {
-    final _$actionInfo = _$_WalletCreateStoreBaseActionController.startAction();
+    final _$actionInfo = _$CreateScreenStoreBaseActionController.startAction();
     try {
       return super.generateMnemonic();
     } finally {
-      _$_WalletCreateStoreBaseActionController.endAction(_$actionInfo);
+      _$CreateScreenStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setMnemonicConfirmation(String mnemonic) {
-    final _$actionInfo = _$_WalletCreateStoreBaseActionController.startAction();
+    final _$actionInfo = _$CreateScreenStoreBaseActionController.startAction();
     try {
       return super.setMnemonicConfirmation(mnemonic);
     } finally {
-      _$_WalletCreateStoreBaseActionController.endAction(_$actionInfo);
+      _$CreateScreenStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void goto(WalletCreateSteps step) {
-    final _$actionInfo = _$_WalletCreateStoreBaseActionController.startAction();
+    final _$actionInfo = _$CreateScreenStoreBaseActionController.startAction();
     try {
       return super.goto(step);
     } finally {
-      _$_WalletCreateStoreBaseActionController.endAction(_$actionInfo);
+      _$CreateScreenStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void clearErros() {
-    final _$actionInfo = _$_WalletCreateStoreBaseActionController.startAction();
+    final _$actionInfo = _$CreateScreenStoreBaseActionController.startAction();
     try {
       return super.clearErros();
     } finally {
-      _$_WalletCreateStoreBaseActionController.endAction(_$actionInfo);
+      _$CreateScreenStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void reset() {
-    final _$actionInfo = _$_WalletCreateStoreBaseActionController.startAction();
+    final _$actionInfo = _$CreateScreenStoreBaseActionController.startAction();
     try {
       return super.reset();
     } finally {
-      _$_WalletCreateStoreBaseActionController.endAction(_$actionInfo);
+      _$CreateScreenStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 

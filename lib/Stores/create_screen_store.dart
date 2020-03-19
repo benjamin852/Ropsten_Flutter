@@ -5,18 +5,17 @@ import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
 
 part 'create_screen_store.g.dart';
 
-class WalletCreateStore = _WalletCreateStoreBase with _$WalletCreateStore;
-
+class CreateScreenStore = CreateScreenStoreBase with _$CreateScreenStore;
 enum WalletCreateSteps {
   display,
   confirm,
 }
 
-abstract class _WalletCreateStoreBase with Store {
+abstract class CreateScreenStoreBase with Store {
   final WalletInitialize _walletInitialize;
   final IAddressService _iAddressService;
 
-  _WalletCreateStoreBase(
+  CreateScreenStoreBase(
     this._walletInitialize,
     this._iAddressService,
   );
