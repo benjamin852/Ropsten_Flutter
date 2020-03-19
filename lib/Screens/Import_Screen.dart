@@ -37,7 +37,7 @@ class _ImportScreenState extends State<ImportScreen> {
   }
 
   Widget buildForm() {
-    Container(
+    return Container(
       margin: EdgeInsets.all(25),
       color: Colors.grey[200],
       child: SingleChildScrollView(

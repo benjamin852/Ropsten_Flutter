@@ -16,9 +16,6 @@ Map<String, WidgetBuilder> getRoutes(context) {
           builder: (ctx, walletImportStore, _) =>
               ImportScreen(walletImportStore),
         ),
-    CreateScreen.routeName: (BuildContext context) =>
-        Consumer<WalletCreateStore>(
-          builder: (ctx, walletCreateStore, _) => CreateScreen(),
-        ),
+    CreateScreen.routeName: (BuildContext context) => CreateScreen()
   };
 }

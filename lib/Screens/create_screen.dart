@@ -48,7 +48,7 @@ class _CreateScreenState extends State<CreateScreen> {
               decoration: BoxDecoration(border: Border.all()),
               child: Observer(
                 builder: (_) => Text(
-                  'hey', //widget.store.mnemonic
+                  'back in the day the danilewitzs used to hunt their meet and eat it! While they were still hunting it!', //widget.store.mnemonic
                   textAlign: TextAlign.center,
                 ),
               ),

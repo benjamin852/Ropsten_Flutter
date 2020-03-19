@@ -10,8 +10,11 @@ class ContractParser {
     final jsonContract = jsonDecode(
       await rootBundle.loadString('assets/TargaryenCoin.json'),
     );
+    print('${jsonContract['contractName']}');
     return DeployedContract(
-        ContractAbi.fromJson(jsonContract['abi'], jsonContract['name']),
-        EthereumAddress.fromHex(contractAddress));
+      ContractAbi.fromJson(
+          jsonEncode(jsonContract['abi']), jsonContract['contractName']),
+      EthereumAddress.fromHex(contractAddress),
+    );
   }
 }
