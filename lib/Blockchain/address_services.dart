@@ -44,6 +44,7 @@ class AddressService implements IAddressService {
     return bip39.entropyToMnemonic(entropyToMnemonic);
   }
 
+  //used for authentication in import wallet
   @override
   Future<bool> setupFromMnemonic(String mnemonic) async {
     final entropyMnemonic = bip39.entropyToMnemonic(mnemonic);

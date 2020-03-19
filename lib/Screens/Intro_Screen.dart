@@ -1,4 +1,5 @@
 import 'package:ethereum_flutter/Screens/Import_Screen.dart';
+import 'package:ethereum_flutter/Screens/create_screen.dart';
 import 'package:flutter/material.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -14,7 +15,8 @@ class IntroScreen extends StatelessWidget {
           children: <Widget>[
             RaisedButton(
               child: Text('Create A New Wallet'),
-              onPressed: () => print('wazy'),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(CreateScreen.routeName),
             ),
             Container(
               padding: EdgeInsets.all(10),
