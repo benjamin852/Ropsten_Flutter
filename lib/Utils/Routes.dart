@@ -23,12 +23,8 @@ Map<String, WidgetBuilder> getRoutes(context) {
           builder: (ctx, createScreenStore, _) =>
               CreateScreen(createScreenStore),
         ),
-    Homepage.routeName: (BuildContext context) {
-      Consumer<WalletInitialize>(
-        builder: (ctx, walletInitialize, _) {
-          Homepage(walletInitialize);
-        },
-      );
-    },
+    Homepage.routeName: (BuildContext context) => Consumer<WalletInitialize>(
+          builder: (ctx, walletInitialize, _) => Homepage(walletInitialize),
+        )
   };
 }

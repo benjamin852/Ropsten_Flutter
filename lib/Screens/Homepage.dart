@@ -9,8 +9,8 @@ class Homepage extends StatefulWidget {
   static const routeName = '/homepage';
 
   //his app does not use a private variable
-  final WalletInitialize _walletInitialize;
-  Homepage(this._walletInitialize);
+  final WalletInitialize walletInitialize;
+  Homepage(this.walletInitialize);
   @override
   _HomepageState createState() => _HomepageState();
 }
@@ -19,14 +19,15 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppDrawer(widget._walletInitialize.address),
+      drawer: AppDrawer(widget.walletInitialize.address),
       appBar: AppBar(
-        title: Text('Ethereum Wallet'),
+        // title: Text('Ethereum Wallet'),
+        title: Text('${widget.walletInitialize.address}'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
             onPressed: () async {
-              await widget._walletInitialize.fetchOwnBalance();
+              await widget.walletInitialize.fetchOwnBalance();
             },
           ),
           IconButton(
@@ -35,7 +36,7 @@ class _HomepageState extends State<Homepage> {
           ),
         ],
       ),
-      body: Balance(widget._walletInitialize),
+      body: Balance(widget.walletInitialize),
     );
   }
 }

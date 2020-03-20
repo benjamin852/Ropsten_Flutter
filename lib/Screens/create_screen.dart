@@ -1,3 +1,4 @@
+import 'package:ethereum_flutter/Screens/Homepage.dart';
 import 'package:ethereum_flutter/Widgets/Form/paper_form.dart';
 import 'package:ethereum_flutter/Widgets/Form/paper_input.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _CreateScreenState extends State<CreateScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('widget.store :${widget.store}');
     return Scaffold(
       appBar: AppBar(
         title: Text('Create Screen'),
@@ -49,7 +51,7 @@ class _CreateScreenState extends State<CreateScreen> {
               decoration: BoxDecoration(border: Border.all()),
               child: Observer(
                 builder: (_) => Text(
-                  'back in the day the danilewitzs used to hunt their meet and eat it! While they were still hunting it!', //widget.store.mnemonic
+                  widget.store.mnemonic,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -61,7 +63,7 @@ class _CreateScreenState extends State<CreateScreen> {
                   child: Text('Copy'),
                   onPressed: () {
                     Clipboard.setData(
-                      ClipboardData(text: 'Wazy'), //widget.store.mnemonic))
+                      ClipboardData(text: widget.store.mnemonic),
                     );
                     Scaffold.of(context).showSnackBar(
                       SnackBar(
@@ -72,7 +74,8 @@ class _CreateScreenState extends State<CreateScreen> {
                 ),
                 RaisedButton(
                   child: const Text('Next'),
-                  onPressed: () => print('TO DO'),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(Homepage.routeName),
                 )
               ],
             )

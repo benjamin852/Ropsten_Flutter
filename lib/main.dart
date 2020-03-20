@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
   MyApp(this.stores);
   @override
   Widget build(BuildContext context) {
-    print('stores: $stores');
     return MultiProvider(
       providers: stores,
       child: Center(

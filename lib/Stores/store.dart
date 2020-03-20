@@ -30,22 +30,24 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
   //fetch or create address
   final addressServices = AddressService(configurationServices);
 
+  // final contractService = TODO
+
   final contract = await ContractParser.parseContract(
       'assets/TargaryenCoin.json', params.contractAddress);
 
-  // final contractService = TODO
-  final walletInitialize = WalletInitialize(
-    configurationServices,
-    addressServices,
-  );
+  final walletInitializeStore =
+      WalletInitialize(configurationServices, addressServices);
 
   final walletImportStore =
-      WalletImportStore(walletInitialize, addressServices);
+      WalletImportStore(walletInitializeStore, addressServices);
 
   final createScreenStore =
-      CreateScreenStore(walletInitialize, addressServices);
+      CreateScreenStore(walletInitializeStore, addressServices);
 
   return [
+    Provider<WalletInitialize>(
+      create: (_) => walletInitializeStore,
+    ),
     Provider<WalletImportStore>(
       create: (_) => walletImportStore,
     ),

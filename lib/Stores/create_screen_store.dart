@@ -35,7 +35,7 @@ abstract class CreateScreenStoreBase with Store {
   @action
   void generateMnemonic() {
     this.reset();
-    _iAddressService.generateMnemonic();
+    this.mnemonic = _iAddressService.generateMnemonic();
   }
 
   @action
@@ -64,11 +64,14 @@ abstract class CreateScreenStoreBase with Store {
 
   @action
   Future<bool> confirmMnemonic() async {
+    print('hit3');
     if (mnemonicConfirm == mnemonic) {
+      print('hit');
       await _iAddressService.setupFromMnemonic(mnemonic);
       await _walletInitialize.initialise();
       return true;
     }
+    print('hit2');
     this.errors.clear();
     this.errors.add('Invalid mnemonic please try again');
     return false;
