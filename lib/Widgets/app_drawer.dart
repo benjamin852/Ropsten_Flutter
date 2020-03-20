@@ -4,8 +4,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
 
 class AppDrawer extends StatefulWidget {
-  final WalletInitialize walletInitialize;
-  AppDrawer(this.walletInitialize);
+  final String url;
+  AppDrawer(this.url);
   @override
   _AppDrawerState createState() => _AppDrawerState();
 }
@@ -21,8 +21,7 @@ class _AppDrawerState extends State<AppDrawer> {
             subtitle: Text('Receive Tokens'),
             trailing: Icon(Icons.attach_money),
             onTap: () async {
-              var url =
-                  'https://faucet.clempe.dev?address=${widget.walletInitialize.address}';
+              var url = 'https://faucet.clempe.dev?address=${widget.url}';
               if (await canLaunch(url)) {
                 await launch(url);
               } else {

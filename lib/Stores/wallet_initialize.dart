@@ -62,9 +62,10 @@ abstract class _WalletInitialize with Store {
   }
 
   Future<void> _initialise() async {
-    // await fetchOwnBalance()
-    print('to do');
+    await fetchOwnBalance();
   }
+
+  Future<void> fetchOwnBalance() async {}
 
   @action
   Future<void> resetWallet() async {
