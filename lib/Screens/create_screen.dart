@@ -31,7 +31,9 @@ class _CreateScreenState extends State<CreateScreen> {
       ),
       body: Observer(
         builder: (context) {
-          return _displayMnemonic();
+          return widget.store.step == WalletCreateSteps.display
+              ? _displayMnemonic()
+              : displayConfirmWidget();
         },
       ),
     );
@@ -74,8 +76,7 @@ class _CreateScreenState extends State<CreateScreen> {
                 ),
                 RaisedButton(
                   child: const Text('Next'),
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed(Homepage.routeName),
+                  onPressed: () => widget.store.goto(WalletCreateSteps.confirm),
                 )
               ],
             )
@@ -92,33 +93,34 @@ class _CreateScreenState extends State<CreateScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            PaperForm(
-              actionButtons: <Widget>[
-                OutlineButton(
-                  child: const Text('Generate New Mnemonic'),
-                  onPressed: () async {
-                    widget.store.generateMnemonic();
-                  },
-                ),
-                RaisedButton(
-                  child: const Text('Confirm'),
-                  onPressed: () async {
-                    if (await widget.store.confirmMnemonic()) {
-                      Navigator.of(context).pushNamed('/');
-                    }
-                  },
-                )
-              ],
-              authMechanism: <Widget>[
-                PaperInput(
-                  labelText: 'Confirm your seed',
-                  hintText: 'Please type your seed phrase again',
-                  maxLines: 2,
-                  onChanged: widget.store.setMnemonicConfirmation,
-                )
-              ],
+            // PaperForm(
+            //authMechanism: <Widget>[
+            PaperInput(
+              labelText: 'Confirm your seed',
+              hintText: 'Please type your seed phrase again',
+              maxLines: 2,
+              onChanged: widget.store.setMnemonicConfirmation,
+            ),
+            SizedBox(height: 20),
+            //   ],
+            //actionButtons: <Widget>[
+            OutlineButton(
+              child: const Text('Generate New Mnemonic'),
+              onPressed: () async {
+                widget.store.generateMnemonic();
+              },
+            ),
+            RaisedButton(
+              child: const Text('Confirm'),
+              onPressed: () async {
+                if (await widget.store.confirmMnemonic()) {
+                  Navigator.of(context).pushNamed(Homepage.routeName);
+                }
+              },
             )
           ],
+          // )
+          // ],
         ),
       ),
     );

@@ -47,7 +47,9 @@ class AddressService implements IAddressService {
   //used for authentication in import wallet
   @override
   Future<bool> setupFromMnemonic(String mnemonic) async {
-    final entropyMnemonic = bip39.entropyToMnemonic(mnemonic);
+    final entropyMnemonic = bip39.mnemonicToEntropy(mnemonic);
+    print('hit222222');
+    print('mnemonic333: $mnemonic');
     await _configService.setMnemonic(entropyMnemonic);
     await _configService.setPrivateKey(null);
     await _configService.setUpDone(true);
