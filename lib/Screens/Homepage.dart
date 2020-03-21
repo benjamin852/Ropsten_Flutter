@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:ethereum_flutter/Widgets/app_drawer.dart';
 import 'package:ethereum_flutter/Widgets/Wallet/balance.dart';
@@ -23,8 +24,8 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       drawer: AppDrawer(widget.walletInitialize.address),
       appBar: AppBar(
-        // title: Text('Ethereum Wallet'),
-        title: Text(widget.walletInitialize.address),
+        title: Text('Ethereum Ropsten Wallet'),
+        // title: Text(widget.walletInitialize.address),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
@@ -38,13 +39,9 @@ class _HomepageState extends State<Homepage> {
           ),
         ],
       ),
-
-      body: Observer(builder: (_) => buildBody()),
-      // body: Balance(widget.walletInitialize),
+      body: Consumer<WalletInitialize>(
+        builder: (context, walletStore, _) => Balance(walletStore),
+      ),
     );
-  }
-
-  Widget buildBody() {
-    return Balance(widget.walletInitialize);
   }
 }

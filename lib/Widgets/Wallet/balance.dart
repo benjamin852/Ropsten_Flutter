@@ -16,7 +16,7 @@ class Balance extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('walletInitialize.address'),
+          Text(walletInitialize.address),
           OutlineButton(
             child: Text('Copy Address'),
             onPressed: () => Clipboard.setData(
