@@ -48,8 +48,6 @@ class AddressService implements IAddressService {
   @override
   Future<bool> setupFromMnemonic(String mnemonic) async {
     final entropyMnemonic = bip39.mnemonicToEntropy(mnemonic);
-    print('hit222222');
-    print('mnemonic333: $mnemonic');
     await _configService.setMnemonic(entropyMnemonic);
     await _configService.setPrivateKey(null);
     await _configService.setUpDone(true);

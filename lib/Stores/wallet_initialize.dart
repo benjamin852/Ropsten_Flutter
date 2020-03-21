@@ -34,7 +34,6 @@ abstract class _WalletInitialize with Store {
   // @observable transactions
 
   Future<void> initialise() async {
-    print('yoyoyoyoyo');
     final entropyMnemonic = _configurationService.getMnemonic();
     final privateKey = _configurationService.getPrivateKey();
 

@@ -1,3 +1,4 @@
+import 'package:ethereum_flutter/Screens/Homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -29,7 +30,7 @@ class _ImportScreenState extends State<ImportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Title from store'),
+        title: Text('Ethereum Ropsten Wallet'),
       ),
       //rebuilds all observables when they change
       body: Observer(builder: (_) => buildForm()),
@@ -48,11 +49,11 @@ class _ImportScreenState extends State<ImportScreen> {
               onPressed: () async {
                 if (widget.store.type == WalletImportType.mnemonic &&
                     await widget.store.authenticateWithMnemonic()) {
-                  print('navigate to the homepage');
+                  Navigator.of(context).popAndPushNamed(Homepage.routeName);
                 }
                 if (widget.store.type == WalletImportType.privateKey &&
                     await widget.store.authenticateWithPrivateKey()) {
-                  print('navigate to homepage');
+                  Navigator.of(context).popAndPushNamed(Homepage.routeName);
                 }
               },
             )

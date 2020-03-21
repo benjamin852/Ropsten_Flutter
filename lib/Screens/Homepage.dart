@@ -4,11 +4,11 @@ import 'package:ethereum_flutter/Widgets/app_drawer.dart';
 import 'package:ethereum_flutter/Widgets/Wallet/balance.dart';
 
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class Homepage extends StatefulWidget {
   static const routeName = '/homepage';
 
-  //his app does not use a private variable
   final WalletInitialize walletInitialize;
   Homepage(this.walletInitialize);
   @override
@@ -22,7 +22,7 @@ class _HomepageState extends State<Homepage> {
       drawer: AppDrawer(widget.walletInitialize.address),
       appBar: AppBar(
         // title: Text('Ethereum Wallet'),
-        title: Text('${widget.walletInitialize.address}'),
+        title: Text('Ethereum App'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
@@ -36,7 +36,13 @@ class _HomepageState extends State<Homepage> {
           ),
         ],
       ),
-      body: Balance(widget.walletInitialize),
+
+      body: Observer(builder: (_) => buildBody()),
+      // body: Balance(widget.walletInitialize),
     );
+  }
+
+  Widget buildBody() {
+    return Balance(widget.walletInitialize);
   }
 }

@@ -25,6 +25,6 @@ Map<String, WidgetBuilder> getRoutes(context) {
         ),
     Homepage.routeName: (BuildContext context) => Consumer<WalletInitialize>(
           builder: (ctx, walletInitialize, _) => Homepage(walletInitialize),
-        )
+        ),
   };
 }
