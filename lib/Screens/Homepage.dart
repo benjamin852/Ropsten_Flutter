@@ -10,6 +10,8 @@ class Homepage extends StatefulWidget {
   static const routeName = '/homepage';
 
   final WalletInitialize walletInitialize;
+  // Homepage(this.walletInitialize, {Key key}) : super(key: key);
+
   Homepage(this.walletInitialize);
   @override
   _HomepageState createState() => _HomepageState();
@@ -22,7 +24,7 @@ class _HomepageState extends State<Homepage> {
       drawer: AppDrawer(widget.walletInitialize.address),
       appBar: AppBar(
         // title: Text('Ethereum Wallet'),
-        title: Text('Ethereum App'),
+        title: Text(widget.walletInitialize.address),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),

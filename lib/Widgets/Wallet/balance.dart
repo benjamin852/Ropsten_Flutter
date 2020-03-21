@@ -12,7 +12,6 @@ class Balance extends StatelessWidget {
   Balance(this.walletInitialize);
   @override
   Widget build(BuildContext context) {
-    print('heyyyyyyyyyyy: ${walletInitialize.tokenBalance}');
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +26,8 @@ class Balance extends StatelessWidget {
           // QrImage(data: walletInitialize.address, size: 150),
           Observer(
             builder: (_) => Text(
-              '${NumberFormatter(walletInitialize.ethBalance).format()}',
+              '${walletInitialize.ethBalance}',
+              // '${NumberFormatter(walletInitialize.ethBalance).format()}',
               style: Theme.of(context).textTheme.body2.apply(fontSizeDelta: 6),
             ),
           ),

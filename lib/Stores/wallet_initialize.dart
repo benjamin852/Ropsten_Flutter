@@ -47,10 +47,12 @@ abstract class _WalletInitialize with Store {
   Future<void> _initialiseMnemonic(String entropyMnemonic) async {
     final mnemonic = _addressServices.entropyToMnemonic(entropyMnemonic);
     final privateKey = _addressServices.getPrivateKey(mnemonic);
-    final address = _addressServices.getPublicAddress(privateKey);
+    final address = await _addressServices.getPublicAddress(privateKey);
 
     this.address = address.toString();
     this.privateKey = privateKey;
+    print('this is the address $address');
+
     await _initialise();
   }
 
