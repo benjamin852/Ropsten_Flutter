@@ -23,7 +23,7 @@ class Balance extends StatelessWidget {
               ClipboardData(text: walletInitialize.address),
             ),
           ),
-          // QrImage(data: walletInitialize.address, size: 150),
+          QrImage(data: walletInitialize.address, size: 150),
           Observer(
             builder: (_) => Text(
               '${NumberFormatter(walletInitialize.tokenBalance).format()}, ERC20 Tokens',
