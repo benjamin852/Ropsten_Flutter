@@ -1,5 +1,6 @@
 // import 'package:provider/provider.dart';
 import 'package:ethereum_flutter/Blockchain/address_services.dart';
+import 'package:ethereum_flutter/Blockchain/contract_service.dart';
 import 'package:ethereum_flutter/Screens/create_screen.dart';
 import 'package:ethereum_flutter/Stores/create_screen_store.dart';
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
@@ -24,19 +25,22 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
         IOWebSocketChannel.connect(params.web3RdpUrl).cast<String>(),
   );
 
+  final contract = await ContractParser.parseContract(
+      'assets/TargaryenCoin.json', params.contractAddress);
+
   final sharedPrefs = await SharedPreferences.getInstance();
   //fetch existing address
   final configurationServices = ConfigurationService(sharedPrefs);
   //fetch or create address
   final addressServices = AddressService(configurationServices);
 
-  // final contractService = TODO
+  final contractService = ContractService(client, contract);
 
-  final contract = await ContractParser.parseContract(
-      'assets/TargaryenCoin.json', params.contractAddress);
-
-  final walletInitializeStore =
-      WalletInitialize(configurationServices, addressServices);
+  final walletInitializeStore = WalletInitialize(
+    configurationServices,
+    addressServices,
+    contractService,
+  );
 
   final walletImportStore =
       WalletImportStore(walletInitializeStore, addressServices);

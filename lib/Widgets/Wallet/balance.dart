@@ -26,14 +26,13 @@ class Balance extends StatelessWidget {
           // QrImage(data: walletInitialize.address, size: 150),
           Observer(
             builder: (_) => Text(
-              '${walletInitialize.ethBalance}',
-              // '${NumberFormatter(walletInitialize.ethBalance).format()}',
+              '${NumberFormatter(walletInitialize.tokenBalance).format()}, ERC20 Tokens',
               style: Theme.of(context).textTheme.body2.apply(fontSizeDelta: 6),
             ),
           ),
           Observer(
             builder: (_) => Text(
-              '${NumberFormatter(walletInitialize.ethBalance).format()}',
+              '${NumberFormatter(walletInitialize.ethBalance).format().substring(0, 4)}, Eth',
               style: Theme.of(context)
                   .textTheme
                   .body2

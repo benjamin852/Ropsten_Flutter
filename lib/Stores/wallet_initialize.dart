@@ -1,8 +1,10 @@
 // import 'package:ethereum_flutter/Blockchain/address_services.dart';
 // import 'package:ethereum_flutter/Blockchain/app_config.dart';
 import 'package:ethereum_flutter/Blockchain/address_services.dart';
+import 'package:ethereum_flutter/Blockchain/contract_service.dart';
 import 'package:ethereum_flutter/Utils/configuration_services.dart';
 import 'package:mobx/mobx.dart';
+import 'package:web3dart/web3dart.dart';
 
 part 'wallet_initialize.g.dart';
 
@@ -12,12 +14,13 @@ abstract class _WalletInitialize with Store {
   // final IContractService _contractService;
   final IConfigurationService _configurationService;
   final IAddressService _addressServices;
+  final ContractService _contractSerivce;
 
   _WalletInitialize(
-    // this._contractService,
-    this._configurationService,
-    this._addressServices,
-  );
+      // this._contractService,
+      this._configurationService,
+      this._addressServices,
+      this._contractSerivce);
 
   @observable
   BigInt tokenBalance;
@@ -67,7 +70,16 @@ abstract class _WalletInitialize with Store {
     await fetchOwnBalance();
   }
 
-  Future<void> fetchOwnBalance() async {}
+  Future<void> fetchOwnBalance() async {
+    var tokenBalance = await _contractSerivce.getTokenBalance(
+      EthereumAddress.fromHex(address),
+    );
+    var ethBalance = await _contractSerivce.getEthBalance(
+      EthereumAddress.fromHex(address),
+    );
+    this.tokenBalance = tokenBalance;
+    this.ethBalance = ethBalance.getInWei;
+  }
 
   @action
   Future<void> resetWallet() async {
