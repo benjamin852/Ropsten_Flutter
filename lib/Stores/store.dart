@@ -51,7 +51,8 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
   final createScreenStore =
       CreateScreenStore(walletInitializeStore, addressServices);
 
-  final transferStore = WalletTransferStore();
+  final transferStore =
+      WalletTransferStore(walletInitializeStore, contractService);
 
   return [
     Provider<WalletInitialize>(
