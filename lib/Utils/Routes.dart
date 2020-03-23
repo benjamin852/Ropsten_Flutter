@@ -1,4 +1,4 @@
-import 'package:ethereum_flutter/Screens/transfer_scren.dart';
+import 'package:ethereum_flutter/Screens/transfer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

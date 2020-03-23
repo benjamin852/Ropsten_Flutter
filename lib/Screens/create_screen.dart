@@ -1,9 +1,9 @@
-import 'package:ethereum_flutter/Screens/Homepage.dart';
-import 'package:ethereum_flutter/Widgets/Form/paper_form.dart';
-import 'package:ethereum_flutter/Widgets/Form/paper_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+
+import 'package:ethereum_flutter/Screens/Homepage.dart';
+import 'package:ethereum_flutter/Widgets/Form/paper_input.dart';
 
 import 'package:ethereum_flutter/Stores/create_screen_store.dart';
 
@@ -98,7 +98,7 @@ class _CreateScreenState extends State<CreateScreen> {
             PaperInput(
               labelText: 'Confirm your seed',
               hintText: 'Please type your seed phrase again',
-              maxLines: 2,
+              maxLines: 3,
               onChanged: widget.store.setMnemonicConfirmation,
             ),
             SizedBox(height: 20),

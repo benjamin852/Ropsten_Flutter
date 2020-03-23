@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ethereum_flutter/Stores/wallet_transfer_store.dart';
 
 import 'package:ethereum_flutter/Widgets/Form/paper_form.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class TransferScreen extends StatefulWidget {
   static const routeName = '/transfer-screen';
@@ -29,7 +30,7 @@ class _TransferScreenState extends State<TransferScreen> {
         ],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           PaperForm(
             paperFormChildren: <Widget>[
@@ -37,12 +38,12 @@ class _TransferScreenState extends State<TransferScreen> {
               PaperInput(
                 labelText: 'To',
                 hintText: 'Type the destination address',
-                onChanged: (String) => print('to do'),
+                onChanged: (String toDo) => print('to do'),
               ),
               PaperInput(
                 labelText: 'Amount',
                 hintText: 'Enter an amount to be sent',
-                onChanged: (String) => print('to do'),
+                onChanged: (String toDo) => print('to do'),
               ),
               RaisedButton(
                 child: Text('Send'),

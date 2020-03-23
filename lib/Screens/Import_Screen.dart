@@ -1,8 +1,9 @@
-import 'package:ethereum_flutter/Screens/Homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import 'package:ethereum_flutter/Widgets/Form/Paper_Form.dart';
+import 'package:ethereum_flutter/Screens/Homepage.dart';
+
+import 'package:ethereum_flutter/Widgets/Form/paper_form.dart';
 import 'package:ethereum_flutter/Widgets/Form/Paper_Radio.dart';
 import 'package:ethereum_flutter/Widgets/Form/Paper_Input.dart';
 
@@ -58,7 +59,7 @@ class _ImportScreenState extends State<ImportScreen> {
               },
             )
           ],
-          authMechanism: <Widget>[
+          paperFormChildren: <Widget>[
             Row(
               children: <Widget>[
                 PaperRadio(

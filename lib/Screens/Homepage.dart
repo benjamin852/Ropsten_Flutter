@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:ethereum_flutter/Widgets/app_drawer.dart';
 import 'package:ethereum_flutter/Widgets/Wallet/balance.dart';
 
-import 'package:ethereum_flutter/Screens/transfer_scren.dart';
+import 'package:ethereum_flutter/Screens/transfer_screen.dart';
 
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

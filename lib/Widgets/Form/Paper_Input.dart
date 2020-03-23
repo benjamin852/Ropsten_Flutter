@@ -23,7 +23,7 @@ class PaperInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       obscureText: this.obscureText,
-      maxLines: 3,
+      maxLines: this.maxLines,
       controller: this.controller,
       onChanged: this.onChanged,
       decoration: InputDecoration(

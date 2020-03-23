@@ -32,7 +32,9 @@ class Balance extends StatelessWidget {
           ),
           Observer(
             builder: (_) => Text(
-              '${NumberFormatter(walletInitialize.ethBalance).format().substring(0, 4)} Eth',
+              walletInitialize.ethBalance.toInt() != 0
+                  ? '${NumberFormatter(walletInitialize.ethBalance).format().substring(0, 4)} Eth'
+                  : '0 Eth',
               style: Theme.of(context)
                   .textTheme
                   .body2
