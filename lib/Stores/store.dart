@@ -1,16 +1,19 @@
-// import 'package:provider/provider.dart';
-import 'package:ethereum_flutter/Blockchain/address_services.dart';
-import 'package:ethereum_flutter/Blockchain/contract_service.dart';
-import 'package:ethereum_flutter/Screens/create_screen.dart';
-import 'package:ethereum_flutter/Stores/create_screen_store.dart';
-import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
-import 'package:ethereum_flutter/Utils/configuration_services.dart';
-import 'package:ethereum_flutter/Stores/wallet_import_store.dart';
+import 'package:ethereum_flutter/Screens/transfer_scren.dart';
 import 'package:provider/provider.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:ethereum_flutter/Blockchain/address_services.dart';
+import 'package:ethereum_flutter/Blockchain/contract_service.dart';
+
+import 'package:ethereum_flutter/Stores/wallet_transfer_store.dart';
+import 'package:ethereum_flutter/Stores/create_screen_store.dart';
+import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
+import 'package:ethereum_flutter/Stores/wallet_import_store.dart';
+
+import 'package:ethereum_flutter/Utils/configuration_services.dart';
 
 import 'package:ethereum_flutter/Blockchain/app_config.dart';
 import 'package:ethereum_flutter/Blockchain/contract_parser.dart';
@@ -48,6 +51,8 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
   final createScreenStore =
       CreateScreenStore(walletInitializeStore, addressServices);
 
+  final transferStore = WalletTransferStore();
+
   return [
     Provider<WalletInitialize>(
       create: (_) => walletInitializeStore,
@@ -57,6 +62,9 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
     ),
     Provider<CreateScreenStore>(
       create: (_) => createScreenStore,
-    )
+    ),
+    Provider<WalletTransferStore>(
+      create: (_) => transferStore,
+    ),
   ];
 }

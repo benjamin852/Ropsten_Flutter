@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:ethereum_flutter/Widgets/app_drawer.dart';
 import 'package:ethereum_flutter/Widgets/Wallet/balance.dart';
 
+import 'package:ethereum_flutter/Screens/transfer_scren.dart';
+
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -25,7 +27,6 @@ class _HomepageState extends State<Homepage> {
       drawer: AppDrawer(widget.walletInitialize.address),
       appBar: AppBar(
         title: Text('Ethereum Ropsten Wallet'),
-        // title: Text(widget.walletInitialize.address),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
@@ -35,7 +36,8 @@ class _HomepageState extends State<Homepage> {
           ),
           IconButton(
             icon: Icon(Icons.send),
-            onPressed: () => print('to do'),
+            onPressed: () =>
+                Navigator.of(context).pushNamed(TransferScreen.routeName),
           ),
         ],
       ),
