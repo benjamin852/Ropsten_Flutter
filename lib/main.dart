@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: Center(
         child: new MaterialApp(
           title: 'Ethereum Flutter Wallet',
-          initialRoute: '/create-screen',
+          initialRoute: '/',
           routes: getRoutes(context),
           theme: ThemeData(
             primarySwatch: Colors.indigo,

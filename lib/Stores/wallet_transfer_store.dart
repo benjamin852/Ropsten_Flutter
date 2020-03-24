@@ -65,8 +65,7 @@ abstract class _WalletTransferStoreBase with Store {
     var transactionEvent = Transaction();
     isLoading(true);
 
-    _iContractService
-        .send(
+    _iContractService.send(
       walletInitialize.privateKey,
       EthereumAddress.fromHex(this.to),
       BigInt.from(double.parse(this.amount) * pow(10, 18)),
@@ -75,9 +74,11 @@ abstract class _WalletTransferStoreBase with Store {
         streamController.close();
         isLoading(false);
       },
-      onError: (error) => streamController.addError(error),
-    )
-        .then(
+      onError: (error) {
+        streamController.addError(error);
+        isLoading(false);
+      },
+    ).then(
       (id) {
         if (id != null) streamController.add(transactionEvent.setId(id));
       },

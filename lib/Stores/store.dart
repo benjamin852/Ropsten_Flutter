@@ -52,7 +52,7 @@ Future<List<SingleChildCloneableWidget>> rootProvider(
 
   final transferStore =
       WalletTransferStore(walletInitializeStore, contractService);
-
+  print('transferStore $transferStore');
   return [
     Provider<WalletInitialize>(
       create: (_) => walletInitializeStore,
