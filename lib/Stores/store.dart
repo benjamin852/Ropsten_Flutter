@@ -1,4 +1,3 @@
-import 'package:ethereum_flutter/Screens/transfer_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';

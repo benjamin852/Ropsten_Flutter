@@ -74,7 +74,7 @@ abstract class _WalletInitialize with Store {
     var tokenBalance = await _contractSerivce.getTokenBalance(
       EthereumAddress.fromHex(address),
     );
-    var ethBalance = await _contractSerivce.getEthBalance(
+    var ethBalance = await _contractSerivce.getEtherBalance(
       EthereumAddress.fromHex(address),
     );
     this.tokenBalance = tokenBalance;

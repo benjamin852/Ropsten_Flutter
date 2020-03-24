@@ -7,7 +7,6 @@ import 'package:ethereum_flutter/Widgets/Wallet/balance.dart';
 import 'package:ethereum_flutter/Screens/transfer_screen.dart';
 
 import 'package:ethereum_flutter/Stores/wallet_initialize.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class Homepage extends StatefulWidget {
   static const routeName = '/homepage';

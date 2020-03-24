@@ -1,7 +1,9 @@
-import 'package:ethereum_flutter/Screens/transfer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:ethereum_flutter/Widgets/pending_transaction.dart';
+
+import 'package:ethereum_flutter/Screens/transfer_screen.dart';
 import 'package:ethereum_flutter/Screens/intro_screen.dart';
 import 'package:ethereum_flutter/Screens/import_screen.dart';
 import 'package:ethereum_flutter/Screens/create_screen.dart';
@@ -33,5 +35,7 @@ Map<String, WidgetBuilder> getRoutes(context) {
           builder: (ctx, walletTransferStore, _) =>
               TransferScreen(walletTransferStore),
         ),
+    PendingTransaction.routeName: (BuildContext context) =>
+        PendingTransaction(),
   };
 }

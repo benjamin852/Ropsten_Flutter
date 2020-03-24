@@ -11,7 +11,12 @@ typedef TransferEvent = void Function(
 abstract class IContractService {
   Future<Credentials> getCredentials(String privateKey);
   Future<String> send(
-      String privateKey, EthereumAddress receiver, BigInt amount);
+    String privateKey,
+    EthereumAddress receiver,
+    BigInt amount, {
+    TransferEvent transferEvent,
+    Function onError,
+  });
   Future<BigInt> getTokenBalance(EthereumAddress address);
   Future<EtherAmount> getEtherBalance(EthereumAddress address);
   Future<void> dispose();
@@ -19,7 +24,7 @@ abstract class IContractService {
 
 }
 
-class ContractService {
+class ContractService implements IContractService {
   final Web3Client client;
   final DeployedContract contract;
   ContractService(this.client, this.contract);
@@ -33,7 +38,7 @@ class ContractService {
     return await client.credentialsFromPrivateKey(privateKey);
   }
 
-  Future<EtherAmount> getEthBalance(EthereumAddress from) async {
+  Future<EtherAmount> getEtherBalance(EthereumAddress from) async {
     return await client.getBalance(from);
   }
 
